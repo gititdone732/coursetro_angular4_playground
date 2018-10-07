@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-
+import {DataService } from './data.service';
 @Component({
   selector: 'app-root',
   //templateUrl: './app.component.html',
   template:`<h1>Hello..Welcome to my first Angular4 App</h1>
   <p>This is {{myObject.name}} from {{myObject.location}}</p> 
+  <p>{{returnVal}}</p>
   <ul>
   <li *ngFor='let arr of myArray'>{{arr}}</li>
   </ul>
@@ -45,7 +46,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-
+constructor(private dataService:DataService)
+{
+  console.log(this.dataService.cars);
+}
+returnVal=this.dataService.myData();
   myObject={
     name:'Vrn',
     age:26,
@@ -68,4 +73,5 @@ export class AppComponent {
     'color':'red',
     'font-size':'4em'
   };
+
 }
